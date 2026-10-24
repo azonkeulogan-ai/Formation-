@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mes formations en ligne</title>
+<meta property="og:title" content="Mes formations en ligne – Cybersécurité, HTML, Cloud, IA">
+<meta property="og:description" content="Apprenez à votre rythme avec des formations écrites claires et pratiques. Accès immédiat après paiement.">
+<meta property="og:type" content="website">
+<style>
+  :root{
+    --bg:#f6f7fb; --card:#ffffff; --text:#1c2230; --muted:#5d667a;
+    --accent:#2563eb; --accent2:#ff90e8; --border:#e3e6ee;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#0f1420; --card:#171d2c; --text:#eef1f8; --muted:#9aa4bb; --border:#262e44; }
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+  header{background:linear-gradient(135deg,#1e3a8a,#2563eb 60%,#7c3aed);color:#fff;text-align:center;padding:48px 20px 56px}
+  header h1{font-size:1.9rem;margin-bottom:10px}
+  header p{max-width:560px;margin:0 auto 22px;opacity:.95}
+  .btn{display:inline-block;text-decoration:none;font-weight:700;border-radius:10px;padding:12px 20px;border:0;cursor:pointer;font-size:1rem}
+  .btn-main{background:#fff;color:#1e3a8a}
+  .btn-buy{background:var(--accent);color:#fff;width:100%;text-align:center;margin-top:14px}
+  .btn-fb{background:#1877f2;color:#fff}
+  .avantages{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:900px;margin:-24px auto 0;padding:0 16px}
+  .avantages span{background:var(--card);border:1px solid var(--border);border-radius:999px;padding:8px 14px;font-size:.9rem;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+  main{max-width:1000px;margin:0 auto;padding:36px 16px}
+  h2{text-align:center;margin-bottom:24px;font-size:1.5rem}
+  .grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:18px}
+  .carte{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;display:flex;flex-direction:column;justify-content:space-between}
+  .icone{font-size:2rem}
+  .carte h3{margin:8px 0 6px;font-size:1.1rem}
+  .carte p{color:var(--muted);font-size:.93rem}
+  .prix{font-size:1.6rem;font-weight:800;margin-top:12px}
+  .prix small{font-size:.85rem;color:var(--muted);font-weight:500}
+  .pack{background:var(--card);border:2px dashed var(--accent);border-radius:16px;padding:22px;text-align:center;margin-top:28px}
+  .partage{text-align:center;margin-top:36px}
+  .partage p{color:var(--muted);margin-bottom:12px}
+  .contact{text-align:center;margin-top:36px;color:var(--muted)}
+  .contact a{color:var(--accent)}
+  footer{text-align:center;color:var(--muted);font-size:.85rem;padding:26px 16px 40px}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🎓 Apprenez des compétences qui rapportent</h1>
+  <p>Cybersécurité, HTML, Cloud, IA, réseaux… Des formations écrites, claires et pratiques, accessibles immédiatement après achat.</p>
+  <a class="btn btn-main" href="#formations">Voir les formations</a>
+</header>
+
+<div class="avantages">
+  <span>⚡ Accès immédiat</span>
+  <span>📱 Lisible sur téléphone</span>
+  <span>🧠 Du débutant à l'avancé</span>
+  <span>🔒 Paiement sécurisé</span>
+</div>
+
+<main>
+  <h2 id="formations">Mes formations</h2>
+  <div class="grille" id="grille"></div>
+
+  <div class="pack">
+    <h3>🔥 Besoin de plusieurs formations ?</h3>
+    <p style="color:var(--muted);margin:6px 0 14px">Contactez-moi pour une offre groupée avantageuse.</p>
+    <a class="btn btn-buy" style="max-width:320px" id="lienContact" href="#">💬 Me contacter sur WhatsApp</a>
+    <p style="margin-top:14px">📞 <a href="tel:+18392352066" style="color:var(--accent);font-weight:700;text-decoration:none">+1 839 235 2066</a></p>
+  </div>
+
+  <div class="partage">
+    <p>Cette page vous a plu ? Partagez-la :</p>
+    <button class="btn btn-fb" id="btnFb">Partager sur Facebook</button>
+  </div>
+</main>
+
+<footer>Contact : <a href="tel:+18392352066" style="color:inherit">+1 839 235 2066</a><br>© <span id="annee"></span> – Tous droits réservés. Contenu éducatif : résultats variables selon l'investissement personnel.</footer>
+
+<script>
+  /* ====== À PERSONNALISER ====== */
+  var BOUTIQUE = "https://logan00.gumroad.com";   // ta boutique Gumroad
+  var CONTACT  = "https://wa.me/18392352066";     // WhatsApp : +1 839 235 2066
+
+  /* Pour chaque formation, remplace lien par son lien Gumroad exact
+     (Gumroad > Products > ouvre le produit > copie le lien).
+     Tant que lien est vide, le bouton ouvre ta boutique. */
+  var formations = [
+    {icone:"🛡️", titre:"Formation sur le hacking éthique", prix:50,  lien:"", desc:"Comprenez les techniques des pirates pour mieux protéger systèmes et réseaux, dans un cadre légal et éthique."},
+    {icone:"☁️", titre:"Les bases du cloud avec AWS et Azure", prix:30, lien:"", desc:"Découvrez le cloud computing et prenez en main les services essentiels d'AWS et de Microsoft Azure."},
+    {icone:"🤖", titre:"Usage professionnel et l'IA", prix:20, lien:"", desc:"Utilisez l'intelligence artificielle pour gagner du temps et booster votre productivité au travail."},
+    {icone:"🧑‍🎨", titre:"Création des avatars IA", prix:25, lien:"", desc:"Apprenez à créer des avatars grâce à l'IA pour vos réseaux, vos contenus et vos projets."},
+    {icone:"🌐", titre:"Architecture réseaux", prix:15, lien:"", desc:"Maîtrisez les bases et les principes d'architecture des réseaux informatiques."},
+    {icone:"💻", titre:"Formation HTML", prix:20, lien:"https://logan00.gumroad.com/l/thdyuq", desc:"Créez vos premières pages web pas à pas, même sans aucune expérience."},
+    {icone:"🔐", titre:"Guide cyber sécurité", prix:100, lien:"", desc:"Un guide complet en 6 modules pour sécuriser vos données, vos comptes et vos appareils."},
+    {icone:"🖥️", titre:"Informatique pratique – De débutant à avancé", prix:150, lien:"", desc:"Le parcours complet pour devenir à l'aise avec l'informatique, des bases jusqu'au niveau avancé."},
+    {icone:"🧩", titre:"Programmation HTML", prix:100, lien:"", desc:"Formation approfondie en 12 modules pour construire de vrais sites web professionnels."}
+  ];
+
+  var grille = document.getElementById("grille");
+  formations.forEach(function(f){
+    var carte = document.createElement("div");
+    carte.className = "carte";
+    var haut = document.createElement("div");
+    var ic = document.createElement("div"); ic.className = "icone"; ic.textContent = f.icone;
+    var h3 = document.createElement("h3"); h3.textContent = f.titre;
+    var p = document.createElement("p"); p.textContent = f.desc;
+    var prix = document.createElement("div"); prix.className = "prix";
+    prix.innerHTML = f.prix + " $ <small>paiement unique</small>";
+    haut.appendChild(ic); haut.appendChild(h3); haut.appendChild(p); haut.appendChild(prix);
+    var a = document.createElement("a");
+    a.className = "btn btn-buy"; a.textContent = "Acheter maintenant";
+    a.href = f.lien || BOUTIQUE; a.target = "_blank"; a.rel = "noopener";
+    carte.appendChild(haut); carte.appendChild(a);
+    grille.appendChild(carte);
+  });
+
+  document.getElementById("lienContact").href = CONTACT;
+  document.getElementById("annee").textContent = new Date().getFullYear();
+  document.getElementById("btnFb").onclick = function(){
+    window.open("https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(location.href), "_blank");
+  };
+</script>
+</body>
+  </html>
+  
